@@ -3,9 +3,73 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Orbit</title>
+		<title>Orbit — Upcoming Space Launches</title>
+		<meta
+			name="description"
+			content="Track upcoming rocket launches and space events with a live countdown to the next liftoff."
+		/>
+		<meta property="og:title" content="Orbit — Upcoming Space Launches" />
+		<meta property="og:description" content="Upcoming rocket launches and space events." />
+		<meta property="og:type" content="website" />
+		<link rel="icon" href="favicon.svg" type="image/svg+xml" />
 	</head>
 	<body>
-		<h1>Orbit</h1>
+		<a class="skip-link" href="#main">Skip to content</a>
+
+		<header class="site-header">
+			<a class="logo" href="index.html">Orbit</a>
+			<nav aria-label="Main">
+				<ul>
+					<li><a href="index.html" aria-current="page">Home</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="main">
+			<section class="hero" aria-labelledby="hero-title">
+				<p class="eyebrow">Next launch</p>
+				<h1 id="hero-title">Watch the next rocket leave Earth</h1>
+				<div id="next-launch" class="next-launch">
+					<h2 class="next-name">Falcon 9 Block 5 | Starlink Group</h2>
+					<p class="next-meta">
+						SpaceX · <time datetime="2026-10-25T12:00:00Z">25 Oct 2026, 15:00</time>
+					</p>
+					<p class="next-meta">Cape Canaveral SFS, FL, USA</p>
+				</div>
+			</section>
+
+			<section class="section" aria-labelledby="upcoming-title">
+				<div class="section-head">
+					<h2 id="upcoming-title">Coming up</h2>
+				</div>
+				<div id="upcoming">
+					<ul class="grid">
+						<li>
+							<article class="card">
+								<div class="card-image-empty"></div>
+								<div class="card-body">
+									<p class="status">Go for Launch</p>
+									<h3>Electron | Example Mission</h3>
+									<p>Rocket Lab</p>
+									<p class="mono">
+										<time datetime="2026-10-27T08:00:00Z"
+											>27 Oct 2026, 11:00</time
+										>
+									</p>
+								</div>
+							</article>
+						</li>
+					</ul>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<p>
+				Data from
+				<a href="https://thespacedevs.com/llapi">Launch Library 2</a>
+				by The Space Devs.
+			</p>
+		</footer>
 	</body>
 </html>
