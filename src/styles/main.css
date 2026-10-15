@@ -264,6 +264,44 @@ main {
 	letter-spacing: 0.1em;
 }
 
+.message {
+	padding: var(--space-md) 0;
+	color: var(--color-muted);
+}
+
+.loading {
+	animation: pulse 1.4s ease-in-out infinite;
+}
+
+.error {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-md);
+	color: var(--color-error);
+}
+
+.button {
+	padding: var(--space-sm) var(--space-md);
+	border: 1px solid var(--color-line);
+	border-radius: var(--radius);
+	background: transparent;
+	color: var(--color-text);
+	font: inherit;
+	cursor: pointer;
+}
+
+.button:hover {
+	border-color: var(--color-accent);
+	color: var(--color-accent);
+}
+
+@keyframes pulse {
+	50% {
+		opacity: 0.4;
+	}
+}
+
 .site-footer {
 	padding-block: var(--space-lg);
 	border-top: 1px solid var(--color-line);

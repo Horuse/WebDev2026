@@ -20,6 +20,7 @@
 			rel="stylesheet"
 		/>
 		<link rel="stylesheet" href="/src/styles/main.css" />
+		<script type="module" src="/src/pages/home.ts"></script>
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -37,38 +38,14 @@
 			<section class="hero" aria-labelledby="hero-title">
 				<p class="eyebrow">Next launch</p>
 				<h1 id="hero-title">Watch the next rocket leave Earth</h1>
-				<div id="next-launch" class="next-launch">
-					<h2 class="next-name">Falcon 9 Block 5 | Starlink Group</h2>
-					<p class="next-meta">
-						SpaceX · <time datetime="2026-10-25T12:00:00Z">25 Oct 2026, 15:00</time>
-					</p>
-					<p class="next-meta">Cape Canaveral SFS, FL, USA</p>
-				</div>
+				<div id="next-launch" class="next-launch" aria-live="polite"></div>
 			</section>
 
 			<section class="section" aria-labelledby="upcoming-title">
 				<div class="section-head">
 					<h2 id="upcoming-title">Coming up</h2>
 				</div>
-				<div id="upcoming">
-					<ul class="grid">
-						<li>
-							<article class="card">
-								<div class="card-image-empty"></div>
-								<div class="card-body">
-									<p class="status">Go for Launch</p>
-									<h3>Electron | Example Mission</h3>
-									<p>Rocket Lab</p>
-									<p class="mono">
-										<time datetime="2026-10-27T08:00:00Z"
-											>27 Oct 2026, 11:00</time
-										>
-									</p>
-								</div>
-							</article>
-						</li>
-					</ul>
-				</div>
+				<div id="upcoming" aria-live="polite"></div>
 			</section>
 		</main>
 
