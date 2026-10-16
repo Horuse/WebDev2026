@@ -14,7 +14,7 @@ export function launchCard(launch: Launch): string {
 					<p class="status">${escapeHtml(launch.status.name)}</p>
 					<h3>${escapeHtml(launch.name)}</h3>
 					<p>${escapeHtml(launch.launch_service_provider.name)}</p>
-					<p class="mono"><time datetime="${launch.net}">${formatDate(launch.net)}</time></p>
+					<p class="mono"><time datetime="${escapeHtml(launch.net)}">${formatDate(launch.net)}</time></p>
 				</div>
 			</article>
 		</li>

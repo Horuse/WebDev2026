@@ -18,3 +18,12 @@ export interface Launch {
 		location: { name: string };
 	};
 }
+
+export interface SpaceEvent {
+	id: number;
+	name: string;
+	date: string;
+	description: string;
+	location: string | null;
+	type: { name: string };
+}

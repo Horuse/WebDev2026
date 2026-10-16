@@ -1,10 +1,15 @@
-import type { Launch } from './types';
+import type { Launch, SpaceEvent } from './types';
 
 export class LaunchApi {
 	baseUrl = 'https://ll.thespacedevs.com/2.3.0';
 
 	async getLaunches(): Promise<Launch[]> {
 		const data = await this.load('/launches/upcoming/?limit=100');
+		return data.results;
+	}
+
+	async getEvents(): Promise<SpaceEvent[]> {
+		const data = await this.load('/events/upcoming/?limit=4');
 		return data.results;
 	}
 
