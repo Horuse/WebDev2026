@@ -1,3 +1,4 @@
+import { getCache, setCache } from './cache';
 import type { Launch, SpaceEvent } from './types';
 
 export class LaunchApi {
@@ -14,6 +15,9 @@ export class LaunchApi {
 	}
 
 	async load(path: string) {
+		const cached = getCache(path);
+		if (cached) return cached;
+
 		const response = await fetch(this.baseUrl + path);
 		if (response.status === 429) {
 			throw new Error('Too many requests to the API. Please try again later.');
@@ -21,6 +25,9 @@ export class LaunchApi {
 		if (!response.ok) {
 			throw new Error('Request failed with status ' + response.status);
 		}
-		return response.json();
+
+		const data = await response.json();
+		setCache(path, data);
+		return data;
 	}
 }
