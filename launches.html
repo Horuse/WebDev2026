@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Upcoming Launches — Orbit</title>
+		<meta
+			name="description"
+			content="Search, filter and sort upcoming rocket launches from space agencies and companies worldwide."
+		/>
+		<meta property="og:title" content="Upcoming Launches — Orbit" />
+		<meta property="og:description" content="Search and filter upcoming rocket launches." />
+		<meta property="og:type" content="website" />
+		<meta name="theme-color" content="#07080c" />
+		<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Space+Mono&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="/src/styles/main.css" />
+		<script type="module" src="/src/pages/launches.ts"></script>
+	</head>
+	<body>
+		<a class="skip-link" href="#main">Skip to content</a>
+
+		<header class="site-header">
+			<a class="logo" href="index.html">Orbit</a>
+			<nav aria-label="Main">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="launches.html" aria-current="page">Launches</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="main" class="section">
+			<h1 class="page-title">Upcoming launches</h1>
+
+			<form id="filters" class="filters" role="search">
+				<div class="field field-search">
+					<label for="search">Search</label>
+					<input
+						id="search"
+						name="search"
+						type="search"
+						placeholder="Mission or provider"
+						autocomplete="off"
+					/>
+				</div>
+				<div class="field">
+					<label for="status">Status</label>
+					<select id="status" name="status">
+						<option value="all">All</option>
+						<option value="Go">Go for launch</option>
+						<option value="TBC">To be confirmed</option>
+						<option value="TBD">To be determined</option>
+					</select>
+				</div>
+				<div class="field">
+					<label for="sort">Sort by</label>
+					<select id="sort" name="sort">
+						<option value="soonest">Soonest first</option>
+						<option value="latest">Latest first</option>
+						<option value="name">Name</option>
+					</select>
+				</div>
+			</form>
+
+			<p id="count" class="count" aria-live="polite"></p>
+			<div id="list"></div>
+			<nav id="pagination" class="pagination" aria-label="Pages"></nav>
+		</main>
+
+		<footer class="site-footer">
+			<p>
+				Data from
+				<a href="https://thespacedevs.com/llapi">Launch Library 2</a>
+				by The Space Devs.
+			</p>
+		</footer>
+	</body>
+</html>

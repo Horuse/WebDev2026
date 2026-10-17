@@ -314,6 +314,72 @@ main {
 	letter-spacing: 0.1em;
 }
 
+.page-title {
+	margin-bottom: var(--space-lg);
+	font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.filters {
+	display: grid;
+	grid-template-columns: 2fr 1fr 1fr;
+	gap: var(--space-md);
+	margin-bottom: var(--space-md);
+}
+
+.field {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-xs);
+}
+
+.field label {
+	color: var(--color-muted);
+	font-family: var(--font-mono);
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+.field input,
+.field select {
+	padding: var(--space-sm) var(--space-md);
+	border: 1px solid var(--color-line);
+	border-radius: var(--radius);
+	background: var(--color-surface);
+	color: var(--color-text);
+	font: inherit;
+}
+
+.field input:focus,
+.field select:focus {
+	border-color: var(--color-accent);
+}
+
+.count {
+	margin-bottom: var(--space-md);
+	color: var(--color-muted);
+	font-size: 0.875rem;
+}
+
+.pagination {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: var(--space-sm);
+	margin-top: var(--space-lg);
+}
+
+.pagination .button {
+	min-width: 2.75rem;
+	font-family: var(--font-mono);
+}
+
+.pagination .button[aria-current='page'] {
+	border-color: var(--color-text);
+	background: var(--color-text);
+	color: var(--color-bg);
+}
+
 .message {
 	padding: var(--space-md) 0;
 	color: var(--color-muted);
@@ -380,6 +446,14 @@ main {
 	.event {
 		grid-template-columns: 1fr;
 		gap: var(--space-xs);
+	}
+
+	.filters {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.field-search {
+		grid-column: 1 / -1;
 	}
 }
 
