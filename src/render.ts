@@ -12,7 +12,7 @@ export function launchCard(launch: Launch): string {
 				${image}
 				<div class="card-body">
 					<p class="status">${escapeHtml(launch.status.name)}</p>
-					<h3>${escapeHtml(launch.name)}</h3>
+					<h3><a href="launch.html?id=${encodeURIComponent(launch.id)}">${escapeHtml(launch.name)}</a></h3>
 					<p>${escapeHtml(launch.launch_service_provider.name)}</p>
 					<p class="mono"><time datetime="${escapeHtml(launch.net)}">${formatDate(launch.net)}</time></p>
 				</div>

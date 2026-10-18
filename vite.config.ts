@@ -7,6 +7,7 @@ export default defineConfig({
 			input: {
 				home: 'index.html',
 				launches: 'launches.html',
+				launch: 'launch.html',
 			},
 		},
 	},

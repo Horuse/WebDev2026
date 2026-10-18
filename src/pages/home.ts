@@ -61,7 +61,7 @@ class HomePage {
 		showContent(
 			this.nextLaunch,
 			`
-			<h2 class="next-name">${escapeHtml(launch.name)}</h2>
+			<h2 class="next-name"><a href="launch.html?id=${encodeURIComponent(launch.id)}">${escapeHtml(launch.name)}</a></h2>
 			<p class="next-meta">
 				${escapeHtml(launch.launch_service_provider.name)} ·
 				<time datetime="${escapeHtml(launch.net)}">${formatDate(launch.net)}</time>

@@ -9,6 +9,10 @@ export class LaunchApi {
 		return data.results;
 	}
 
+	async getLaunch(id: string): Promise<Launch> {
+		return this.load('/launches/' + encodeURIComponent(id) + '/?mode=detailed');
+	}
+
 	async getEvents(): Promise<SpaceEvent[]> {
 		const data = await this.load('/events/upcoming/?limit=4');
 		return data.results;
