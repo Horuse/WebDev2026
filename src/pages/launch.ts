@@ -2,7 +2,7 @@ import { LaunchApi } from '../api';
 import { Countdown } from '../countdown';
 import { showContent, showError, showLoading } from '../render';
 import type { Launch } from '../types';
-import { escapeHtml, formatDate } from '../utils';
+import { escapeHtml, formatDate, isSafeUrl } from '../utils';
 
 class LaunchPage {
 	api = new LaunchApi();
@@ -111,9 +111,10 @@ class LaunchPage {
 	}
 
 	padSection(launch: Launch): string {
-		const map = launch.pad.map_url
-			? `<a href="${escapeHtml(launch.pad.map_url)}" target="_blank" rel="noopener">Open on map</a>`
-			: '';
+		const map =
+			launch.pad.map_url && isSafeUrl(launch.pad.map_url)
+				? `<a href="${escapeHtml(launch.pad.map_url)}" target="_blank" rel="noopener">Open on map</a>`
+				: '';
 
 		return `
 			<section>
@@ -128,7 +129,7 @@ class LaunchPage {
 	}
 
 	videoSection(launch: Launch): string {
-		const videos = launch.vid_urls ?? [];
+		const videos = (launch.vid_urls ?? []).filter((video) => isSafeUrl(video.url));
 
 		if (videos.length === 0) {
 			return '<section><h2>Webcasts</h2><p>No webcasts announced yet.</p></section>';

@@ -67,3 +67,7 @@ export function getPage<T>(items: T[], page: number, perPage: number): T[] {
 	const start = (page - 1) * perPage;
 	return items.slice(start, start + perPage);
 }
+
+export function isSafeUrl(url: string): boolean {
+	return url.startsWith('https://') || url.startsWith('http://');
+}
