@@ -6,6 +6,8 @@
 	--color-line: rgba(232, 230, 223, 0.12);
 	--color-accent: #f2a65a;
 	--color-error: #ff7a6b;
+	--color-star: rgba(255, 255, 255, 0.55);
+	--color-star-dim: rgba(255, 255, 255, 0.25);
 
 	--font-sans: 'Space Grotesk', system-ui, sans-serif;
 	--font-mono: 'Space Mono', ui-monospace, monospace;
@@ -33,11 +35,21 @@ body {
 	flex-direction: column;
 	background-color: var(--color-bg);
 	background-image:
-		radial-gradient(1px 1px at 12% 18%, rgba(255, 255, 255, 0.5), transparent),
-		radial-gradient(1px 1px at 68% 8%, rgba(255, 255, 255, 0.35), transparent),
-		radial-gradient(1px 1px at 84% 42%, rgba(255, 255, 255, 0.4), transparent),
-		radial-gradient(1px 1px at 32% 64%, rgba(255, 255, 255, 0.3), transparent),
-		radial-gradient(1px 1px at 52% 88%, rgba(255, 255, 255, 0.35), transparent);
+		radial-gradient(circle at 24px 36px, var(--color-star) 0.6px, transparent 1px),
+		radial-gradient(circle at 150px 110px, var(--color-star) 0.6px, transparent 1px),
+		radial-gradient(circle at 90px 200px, var(--color-star) 0.5px, transparent 1px),
+		radial-gradient(circle at 60px 80px, var(--color-star-dim) 0.8px, transparent 1.2px),
+		radial-gradient(circle at 260px 240px, var(--color-star-dim) 0.6px, transparent 1px),
+		radial-gradient(circle at 330px 40px, var(--color-star) 1px, transparent 1.6px),
+		radial-gradient(circle at 120px 390px, var(--color-star-dim) 1px, transparent 1.6px);
+	background-size:
+		230px 230px,
+		230px 230px,
+		230px 230px,
+		340px 340px,
+		340px 340px,
+		470px 470px,
+		470px 470px;
 	background-attachment: fixed;
 	color: var(--color-text);
 	font-family: var(--font-sans);
@@ -145,20 +157,61 @@ main {
 .hero {
 	position: relative;
 	padding-block: var(--space-xl);
-	overflow: hidden;
+	--orbit-size: 22rem;
+	--planet-size: 8px;
+}
+
+.hero:hover {
+	--planet-size: 28px;
+}
+
+.hero::before,
+.hero::after {
+	content: '';
+	position: absolute;
+	pointer-events: none;
 }
 
 .hero::before {
-	content: '';
-	position: absolute;
-	top: 50%;
-	right: -10rem;
-	width: 32rem;
-	aspect-ratio: 1;
+	top: calc(50% - var(--orbit-size) / 2);
+	right: 0;
+	width: var(--orbit-size);
+	height: var(--orbit-size);
 	border: 1px solid var(--color-line);
 	border-radius: 50%;
-	transform: translateY(-50%);
-	pointer-events: none;
+	transition: border-color 0.8s;
+}
+
+.hero:hover::before {
+	border-color: rgba(242, 166, 90, 0.45);
+}
+
+.hero::after {
+	top: calc(50% - var(--orbit-size) / 2 - var(--planet-size) / 2);
+	right: calc(var(--orbit-size) / 2 - var(--planet-size) / 2);
+	width: var(--planet-size);
+	height: var(--planet-size);
+	border-radius: 50%;
+	background: radial-gradient(circle at 35% 35%, #ffd2a1, var(--color-accent) 60%);
+	transform-origin: 50% calc(var(--orbit-size) / 2 + var(--planet-size) / 2);
+	animation: orbit 40s linear infinite;
+	transition-property: width, height, top, right, transform-origin;
+	transition-duration: 0.8s;
+	transition-timing-function: ease-out;
+	box-shadow: black 0 0 20px 10px;
+}
+
+@media (max-width: 64rem) {
+	.hero::before,
+	.hero::after {
+		display: none;
+	}
+}
+
+@keyframes orbit {
+	to {
+		transform: rotate(360deg);
+	}
 }
 
 .eyebrow {
@@ -499,11 +552,6 @@ main {
 @media (max-width: 40rem) {
 	.hero {
 		padding-block: var(--space-lg);
-	}
-
-	.hero::before {
-		width: 20rem;
-		right: -8rem;
 	}
 
 	.site-header ul {
