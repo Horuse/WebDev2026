@@ -1,3 +1,4 @@
+import { icons } from './icons';
 import type { Launch } from './types';
 import { escapeHtml, formatDate } from './utils';
 
@@ -13,8 +14,9 @@ export function launchCard(launch: Launch): string {
 				<div class="card-body">
 					<p class="status">${escapeHtml(launch.status.name)}</p>
 					<h3><a href="launch.html?id=${encodeURIComponent(launch.id)}">${escapeHtml(launch.name)}</a></h3>
-					<p>${escapeHtml(launch.launch_service_provider.name)}</p>
-					<p class="mono"><time datetime="${escapeHtml(launch.net)}">${formatDate(launch.net)}</time></p>
+					<p class="meta">${icons.enterprise}${escapeHtml(launch.launch_service_provider.name)}</p>
+					<p class="meta">${icons.location}${escapeHtml(launch.pad.location.name)}</p>
+					<p class="meta mono">${icons.calendar}<time datetime="${escapeHtml(launch.net)}">${formatDate(launch.net)}</time></p>
 				</div>
 			</article>
 		</li>

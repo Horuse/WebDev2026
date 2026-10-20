@@ -1,5 +1,6 @@
 import { LaunchApi } from '../api';
 import { Countdown } from '../countdown';
+import { icons } from '../icons';
 import { launchCard, showContent, showError, showLoading } from '../render';
 import type { Launch, SpaceEvent } from '../types';
 import { escapeHtml, formatDate } from '../utils';
@@ -62,11 +63,11 @@ class HomePage {
 			this.nextLaunch,
 			`
 			<h2 class="next-name"><a href="launch.html?id=${encodeURIComponent(launch.id)}">${escapeHtml(launch.name)}</a></h2>
-			<p class="next-meta">
-				${escapeHtml(launch.launch_service_provider.name)} ·
-				<time datetime="${escapeHtml(launch.net)}">${formatDate(launch.net)}</time>
-			</p>
-			<p class="next-meta">${escapeHtml(launch.pad.location.name)}</p>
+			<div class="meta-list">
+				<p class="meta">${icons.enterprise}${escapeHtml(launch.launch_service_provider.name)}</p>
+				<p class="meta">${icons.calendar}<time datetime="${escapeHtml(launch.net)}">${formatDate(launch.net)}</time></p>
+				<p class="meta">${icons.location}${escapeHtml(launch.pad.location.name)}</p>
+			</div>
 			<div class="countdown" role="timer" aria-label="Time until launch"></div>
 		`,
 		);
@@ -84,7 +85,7 @@ class HomePage {
 				<time class="mono" datetime="${escapeHtml(event.date)}">${formatDate(event.date)}</time>
 				<div>
 					<h3>${escapeHtml(event.name)}</h3>
-					<p class="event-type">${escapeHtml(event.type.name)}${place}</p>
+					<p class="event-type meta">${icons.event}${escapeHtml(event.type.name)}${place}</p>
 					<p>${escapeHtml(event.description)}</p>
 				</div>
 			</li>

@@ -240,8 +240,49 @@ main {
 	font-size: clamp(1.25rem, 3vw, 1.75rem);
 }
 
-.next-meta {
+.icon {
+	flex-shrink: 0;
+	width: 1em;
+	height: 1em;
+}
+
+.meta {
+	display: flex;
+	align-items: center;
+	gap: var(--space-sm);
+}
+
+.meta-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-xs) var(--space-lg);
 	color: var(--color-muted);
+}
+
+.arrow-link,
+.back,
+.external {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-sm);
+}
+
+.arrow-link .icon,
+.back .icon {
+	transition: translate 0.2s;
+}
+
+.arrow-link:hover .icon {
+	translate: 4px 0;
+}
+
+.back:hover .icon {
+	translate: -4px 0;
+}
+
+.external .icon {
+	width: 0.8em;
+	height: 0.8em;
 }
 
 .countdown {
@@ -403,6 +444,25 @@ main {
 	font: inherit;
 }
 
+.search-input {
+	position: relative;
+	display: flex;
+}
+
+.search-input .icon {
+	position: absolute;
+	top: 50%;
+	left: var(--space-md);
+	color: var(--color-muted);
+	translate: 0 -50%;
+	pointer-events: none;
+}
+
+.search-input input {
+	width: 100%;
+	padding-left: calc(var(--space-md) * 2 + 1em);
+}
+
 .field input:focus,
 .field select:focus {
 	border-color: var(--color-accent);
@@ -434,7 +494,6 @@ main {
 }
 
 .back {
-	display: inline-block;
 	margin-bottom: var(--space-lg);
 	color: var(--color-muted);
 	font-size: 0.875rem;
@@ -467,6 +526,9 @@ main {
 }
 
 .details-grid h2 {
+	display: flex;
+	align-items: center;
+	gap: var(--space-sm);
 	margin-bottom: var(--space-md);
 	color: var(--color-text);
 	font-size: 1.25rem;

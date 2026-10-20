@@ -16,6 +16,7 @@ A small web app for browsing upcoming rocket launches and space events.
 - HTML5, CSS (custom properties, grid, flexbox), TypeScript
 - Vite, Vitest, ESLint, Prettier
 - [Launch Library 2 API](https://thespacedevs.com/llapi) by The Space Devs
+- [IBM Carbon Icons](https://carbondesignsystem.com/elements/icons/library/) (Apache 2.0)
 - GitHub Pages via GitHub Actions
 
 ## Getting started

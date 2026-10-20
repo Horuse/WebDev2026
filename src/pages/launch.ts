@@ -1,5 +1,6 @@
 import { LaunchApi } from '../api';
 import { Countdown } from '../countdown';
+import { icons } from '../icons';
 import { showContent, showError, showLoading } from '../render';
 import type { Launch } from '../types';
 import { escapeHtml, formatDate, isSafeUrl } from '../utils';
@@ -48,10 +49,10 @@ class LaunchPage {
 			<header class="details-head">
 				<p class="status">${escapeHtml(launch.status.name)}</p>
 				<h1>${escapeHtml(launch.name)}</h1>
-				<p class="next-meta">
-					${escapeHtml(launch.launch_service_provider.name)} ·
-					<time datetime="${escapeHtml(launch.net)}">${formatDate(launch.net)}</time>
-				</p>
+				<div class="meta-list">
+					<p class="meta">${icons.enterprise}${escapeHtml(launch.launch_service_provider.name)}</p>
+					<p class="meta">${icons.calendar}<time datetime="${escapeHtml(launch.net)}">${formatDate(launch.net)}</time></p>
+				</div>
 				${isFuture ? '<div class="countdown" role="timer" aria-label="Time until launch"></div>' : ''}
 			</header>
 			${image}
@@ -73,13 +74,13 @@ class LaunchPage {
 
 	missionSection(launch: Launch): string {
 		if (!launch.mission) {
-			return '<section><h2>Mission</h2><p>No mission details yet.</p></section>';
+			return `<section><h2>${icons.satellite}Mission</h2><p>No mission details yet.</p></section>`;
 		}
 
 		const mission = launch.mission;
 		return `
 			<section>
-				<h2>Mission</h2>
+				<h2>${icons.satellite}Mission</h2>
 				<dl>
 					${this.fact('Name', mission.name)}
 					${this.fact('Type', mission.type)}
@@ -97,7 +98,7 @@ class LaunchPage {
 
 		return `
 			<section>
-				<h2>Rocket</h2>
+				<h2>${icons.rocket}Rocket</h2>
 				<dl>
 					${this.fact('Name', rocket.full_name)}
 					${this.fact('Length', length)}
@@ -113,12 +114,12 @@ class LaunchPage {
 	padSection(launch: Launch): string {
 		const map =
 			launch.pad.map_url && isSafeUrl(launch.pad.map_url)
-				? `<a href="${escapeHtml(launch.pad.map_url)}" target="_blank" rel="noopener">Open on map</a>`
+				? `<a href="${escapeHtml(launch.pad.map_url)}" target="_blank" rel="noopener" class="external">Open on map${icons.launch}</a>`
 				: '';
 
 		return `
 			<section>
-				<h2>Launch pad</h2>
+				<h2>${icons.location}Launch pad</h2>
 				<dl>
 					${this.fact('Pad', launch.pad.name)}
 					${this.fact('Location', launch.pad.location.name)}
@@ -132,17 +133,17 @@ class LaunchPage {
 		const videos = (launch.vid_urls ?? []).filter((video) => isSafeUrl(video.url));
 
 		if (videos.length === 0) {
-			return '<section><h2>Webcasts</h2><p>No webcasts announced yet.</p></section>';
+			return `<section><h2>${icons.video}Webcasts</h2><p>No webcasts announced yet.</p></section>`;
 		}
 
 		const links = videos
 			.map(
 				(video) =>
-					`<li><a href="${escapeHtml(video.url)}" target="_blank" rel="noopener">${escapeHtml(video.title)}</a></li>`,
+					`<li><a href="${escapeHtml(video.url)}" target="_blank" rel="noopener" class="external">${escapeHtml(video.title)}${icons.launch}</a></li>`,
 			)
 			.join('');
 
-		return `<section><h2>Webcasts</h2><ul class="links">${links}</ul></section>`;
+		return `<section><h2>${icons.video}Webcasts</h2><ul class="links">${links}</ul></section>`;
 	}
 
 	fact(label: string, value: string | number | null | undefined): string {
