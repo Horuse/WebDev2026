@@ -415,7 +415,8 @@ main {
 
 .filters {
 	display: grid;
-	grid-template-columns: 2fr 1fr 1fr;
+	grid-template-columns: 2fr 1fr 1fr auto;
+	align-items: end;
 	gap: var(--space-md);
 	margin-bottom: var(--space-md);
 }

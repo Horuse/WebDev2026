@@ -13,6 +13,7 @@ class LaunchesPage {
 	search = document.querySelector<HTMLInputElement>('#search')!;
 	status = document.querySelector<HTMLSelectElement>('#status')!;
 	sort = document.querySelector<HTMLSelectElement>('#sort')!;
+	reset = document.querySelector<HTMLButtonElement>('#reset')!;
 	count = document.querySelector<HTMLElement>('#count')!;
 	list = document.querySelector<HTMLElement>('#list')!;
 	pagination = document.querySelector<HTMLElement>('#pagination')!;
@@ -24,6 +25,12 @@ class LaunchesPage {
 		this.search.addEventListener('input', () => this.onFilterChange());
 		this.status.addEventListener('change', () => this.onFilterChange());
 		this.sort.addEventListener('change', () => this.onFilterChange());
+		this.reset.addEventListener('click', () => {
+			this.search.value = '';
+			this.status.value = 'all';
+			this.sort.value = 'soonest';
+			this.onFilterChange();
+		});
 
 		this.pagination.addEventListener('click', (event) => {
 			const button = (event.target as HTMLElement).closest('button');
