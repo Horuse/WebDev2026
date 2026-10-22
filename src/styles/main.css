@@ -422,6 +422,7 @@ main {
 }
 
 .field {
+	min-width: 0;
 	display: flex;
 	flex-direction: column;
 	gap: var(--space-xs);
@@ -634,8 +635,15 @@ main {
 		grid-template-columns: 1fr 1fr;
 	}
 
-	.field-search {
+	.field-search,
+	#reset {
 		grid-column: 1 / -1;
+	}
+}
+
+@media (max-width: 24rem) {
+	.filters {
+		grid-template-columns: 1fr;
 	}
 }
 
